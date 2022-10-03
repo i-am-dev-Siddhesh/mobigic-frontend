@@ -61,6 +61,19 @@ const post = (
     .catch((error: AxiosError) => requestFailureCallback(url, error));
 };
 
+const postWithServerResponse = (
+  url: string,
+  params?: Record<string, any>,
+  data?: Record<string, any>
+): Promise<any> => {
+  return instance
+    .post(url, data, {
+      params,
+    })
+    .then((response: AxiosResponse) => response)
+    .catch((error: AxiosError) => requestFailureCallback(url, error));
+};
+
 const put = (
   url: string,
   params?: Record<string, any>,
@@ -74,4 +87,4 @@ const put = (
     .catch((error: AxiosError) => requestFailureCallback(url, error));
 };
 
-export { get, post, put };
+export { get, post, put, postWithServerResponse };

@@ -1,4 +1,4 @@
-import { post } from "@/services/serverConfig";
+import { post, postWithServerResponse } from "@/services/serverConfig";
 import Services from "../serviceUrls";
 import { LoginProps } from "./types";
 
@@ -7,7 +7,7 @@ function getLoggedInUser(): Promise<string> {
 }
 
 function loginUser(data: LoginProps): Promise<any> {
-  return post(Services.Login, {}, data);
+  return postWithServerResponse(Services.Login, {}, data);
 }
 
 function logoutUser(): Promise<string> {

@@ -1,13 +1,9 @@
 import SignUpPage from "@/components/Signup";
 import type { NextPage } from "next";
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import NewWindow from "react-new-window";
 
 const SignupPage: NextPage = () => {
- 
-
   return (
     <div>
       <Head>
@@ -15,8 +11,7 @@ const SignupPage: NextPage = () => {
         <meta name="description" content="Mobigic : Register Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SignUpPage  />
-
+      <SignUpPage />
     </div>
   );
 };

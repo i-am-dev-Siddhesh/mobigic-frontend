@@ -4,7 +4,7 @@ const BasicLayout = ({ children }: any) => {
   return (
     <>
       <Navbar />
-      <div>{children}</div>
+      <div style={{padding:"1rem 2rem"}}>{children}</div>
     </>
   );
 };

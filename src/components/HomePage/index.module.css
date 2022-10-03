@@ -1,3 +1,22 @@
-.root{
-    display: block;
+.root {
+  display: block;
+}
+.file_card {
+  display: flex;
+  gap: 20px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 600px;
+}
+
+.th,
+.file_card td {
+  text-align: left;
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #d6eeee;
 }

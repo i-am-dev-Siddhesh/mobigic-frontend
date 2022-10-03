@@ -23,6 +23,13 @@ function verfiyUserEmail(data: any): Promise<string> {
   return post(Services.verfiyUserEmail, {}, data);
 }
 
+function downloadFile(data: any): Promise<string> {
+  return post(Services.downloadFile, {}, data);
+}
+function uploadFile(data: any): Promise<string> {
+  return post(Services.uploadFile, {}, data);
+}
+
 function resetPassword(
   data: TResetPasswordProps,
   params: any
@@ -35,7 +42,9 @@ const UserService = {
   updateUser,
   forgotPassword,
   resetPassword,
-  verfiyUserEmail
+  verfiyUserEmail,
+  downloadFile,
+  uploadFile,
 };
 
 export default UserService;

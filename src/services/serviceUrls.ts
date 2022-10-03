@@ -3,11 +3,13 @@ const Services = {
   Login: "auth/user/login",
   Logout: "auth/user/logout",
   verfiyUserEmail: "auth/user/verify",
+  downloadFile: "/user/file/download",
+  uploadFile: "/user/file",
 
   registerUser: "/user/register",
   updateUser: "/user/update",
   forgotPassword: "/user/forgotPassword",
   resetPassword: "/user/resetPassword",
- } as const;
+} as const;
 
 export default Services;
