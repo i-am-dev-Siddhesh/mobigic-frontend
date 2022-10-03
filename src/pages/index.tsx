@@ -1,5 +1,6 @@
+import HomePage from "@/components/HomePage";
 import BasicLayout from "@/components/Layout";
- import { getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import Head from "next/head";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <main>
         <BasicLayout>
+          <HomePage />
         </BasicLayout>
       </main>
     </>
@@ -32,4 +34,4 @@ export async function getServerSideProps(context: any) {
   return {
     props: { session },
   };
-} 
+}

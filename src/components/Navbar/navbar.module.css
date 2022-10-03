@@ -1,0 +1,6 @@
+.root {
+  padding: 1rem 2rem;
+  display: flex;
+  background: #000;
+  color: white;
+}
