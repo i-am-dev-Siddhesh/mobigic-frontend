@@ -15,6 +15,18 @@ const instance = axios.create({
   withCredentials: true,
 });
 
+const instanceWithResponseTypeBlob = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_SERVER_API_URL as string,
+  timeout: 10000,
+  headers: {
+    apikey: process.env.NEXT_PUBLIC_SERVER_API_KEY as string,
+    Accept: "application/json",
+    "content-type": "application/json",
+  },
+  withCredentials: true,
+  responseType: "blob",
+});
+
 const requestFailureCallback = (url: string, error: AxiosError): any => {
   if (error.response) {
     console.log(
@@ -66,7 +78,7 @@ const postWithServerResponse = (
   params?: Record<string, any>,
   data?: Record<string, any>
 ): Promise<any> => {
-  return instance
+  return instanceWithResponseTypeBlob
     .post(url, data, {
       params,
     })

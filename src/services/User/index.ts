@@ -1,4 +1,4 @@
-import { post, put } from "@/services/serverConfig";
+import { post, postWithServerResponse, put } from "@/services/serverConfig";
 import Services from "../serviceUrls";
 import {
   TForgotPasswordProps,
@@ -24,7 +24,7 @@ function verfiyUserEmail(data: any): Promise<string> {
 }
 
 function downloadFile(data: any): Promise<string> {
-  return post(Services.downloadFile, {}, data);
+  return postWithServerResponse(Services.downloadFile, {}, data);
 }
 function uploadFile(data: any): Promise<string> {
   return post(Services.uploadFile, {}, data);

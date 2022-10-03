@@ -1,8 +1,8 @@
 import UserService from "@/src/services/User";
-import { useForm } from "react-hook-form";
-import styles from "./index.module.css";
-import { toast } from "react-toastify";
 import { errorFormatter } from "@/src/utils/helper";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import styles from "./index.module.css";
 
 const HomePage = () => {
   const {
@@ -17,13 +17,20 @@ const HomePage = () => {
     code: number | string;
   }) => {
     try {
-      console.log("values", values);
-
       const resp: any = await UserService.downloadFile({
         filename: values.filename,
         code: +values?.code,
       });
-      console.log("resp", resp);
+
+      const href = URL.createObjectURL(resp.data);
+      const link = document.createElement("a");
+      link.href = href;
+      link.setAttribute("download", "file.pdf");
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+      URL.revokeObjectURL(href);
 
       reset();
       toast.success(resp?.data.message, {
@@ -53,7 +60,7 @@ const HomePage = () => {
             <form
               onSubmit={handleSubmit((values) =>
                 onSubmit({
-                  filename: "user-file-1664680979124.png",
+                  filename: "user-file-1664772072123.png",
                   code: values.code,
                 })
               )}
