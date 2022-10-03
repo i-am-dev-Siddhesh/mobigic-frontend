@@ -2,6 +2,7 @@ import HomePage from "@/components/HomePage";
 import BasicLayout from "@/components/Layout";
 import { getSession } from "next-auth/react";
 import Head from "next/head";
+import UserService from "../services/User";
 
 export default function Home() {
   return (

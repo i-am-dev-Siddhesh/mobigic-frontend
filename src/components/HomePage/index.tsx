@@ -1,5 +1,6 @@
 import UserService from "@/src/services/User";
 import { errorFormatter } from "@/src/utils/helper";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import styles from "./index.module.css";
@@ -11,6 +12,14 @@ const HomePage = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const [files, setFiles] = useState([]);
+  useEffect(() => {
+    const resp: any = UserService.getFiles()
+      .then((resp: any) => setFiles(resp?.data || []))
+      .catch((error) => {
+        console.log("errror", error);
+      });
+  }, []);
 
   const onSubmit = async (values: {
     filename: string;
@@ -53,8 +62,8 @@ const HomePage = () => {
           <th style={{ textAlign: "start" }}>Filname</th>
           <th style={{ textAlign: "start" }}>Action</th>
         </tr>
-        {data.length > 0 &&
-          data?.map((element, index) => {
+        {files?.length > 0 &&
+          files?.map((element: any, index: number) => {
             return (
               <tr key={index}>
                 <td style={{ padding: "10px" }}>{element.fileUrl}</td>

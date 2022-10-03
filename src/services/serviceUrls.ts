@@ -4,8 +4,7 @@ const Services = {
   Logout: "auth/user/logout",
   verfiyUserEmail: "auth/user/verify",
   downloadFile: "/user/file/download",
-  uploadFile: "/user/file",
-
+  file: "/user/file",
   registerUser: "/user/register",
   updateUser: "/user/update",
   forgotPassword: "/user/forgotPassword",

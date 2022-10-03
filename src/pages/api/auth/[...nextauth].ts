@@ -43,7 +43,7 @@ const nextAuthOptions = (req: any, res: any) => {
           }
           const cookies = resp.headers["set-cookie"];
           res.setHeader("Set-Cookie", cookies);
-          return resp?.data;
+          return resp?.data?.data;
         },
       }),
     ],
@@ -104,3 +104,4 @@ const nextAuthOptions = (req: any, res: any) => {
 export default (req: any, res: any) => {
   return NextAuth(req, res, nextAuthOptions(req, res));
 };
+ 

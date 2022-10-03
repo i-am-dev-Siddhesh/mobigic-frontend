@@ -1,4 +1,9 @@
-import { post, postWithServerResponse, put } from "@/services/serverConfig";
+import {
+  get,
+  post,
+  postWithServerResponse,
+  put,
+} from "@/services/serverConfig";
 import Services from "../serviceUrls";
 import {
   TForgotPasswordProps,
@@ -27,7 +32,11 @@ function downloadFile(data: any): Promise<string> {
   return postWithServerResponse(Services.downloadFile, {}, data);
 }
 function uploadFile(data: any): Promise<string> {
-  return post(Services.uploadFile, {}, data);
+  return post(Services.file, {}, data);
+}
+
+function getFiles(): Promise<string> {
+  return get(Services.file, {});
 }
 
 function resetPassword(
@@ -45,6 +54,7 @@ const UserService = {
   verfiyUserEmail,
   downloadFile,
   uploadFile,
+  getFiles,
 };
 
 export default UserService;
