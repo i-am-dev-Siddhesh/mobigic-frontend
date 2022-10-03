@@ -50,11 +50,57 @@ const HomePage = () => {
 
       <table className={styles.table}>
         <tr>
-          <th>Filname</th>
-          <th>Action</th>
+          <th style={{ textAlign: "start" }}>Filname</th>
+          <th style={{ textAlign: "start" }}>Action</th>
         </tr>
+        {data.length > 0 &&
+          data?.map((element, index) => {
+            return (
+              <tr key={index}>
+                <td style={{ padding: "10px" }}>{element.fileUrl}</td>
+                <td style={{ padding: "10px" }}>
+                  <form
+                    onSubmit={handleSubmit((values) =>
+                      onSubmit({
+                        filename: element.fileUrl,
+                        code: values.code,
+                      })
+                    )}
+                    style={{ display: "flex", gap: "20px" }}
+                  >
+                    <input
+                      type="number"
+                      placeholder="Enter code"
+                      className={styles.input}
+                      {...register("code")}
+                      required
+                      style={{
+                        padding: "5px",
+                        borderRadius: "3px",
+                        border: "none",
+                        outline: "none",
+                      }}
+                    />
 
-        <tr>
+                    <button
+                      type="submit"
+                      style={{
+                        padding: "5px 10px",
+                        borderRadius: "3px",
+                        border: "none",
+                        outline: "none",
+                        background: "black",
+                        color: "white",
+                      }}
+                    >
+                      Download File
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            );
+          })}
+        {/* <tr>
           <td style={{ padding: "10px" }}>user-file-1664680979124.png</td>
           <td style={{ padding: "10px" }}>
             <form
@@ -74,10 +120,10 @@ const HomePage = () => {
                 required
               />
 
-              <button>Download File</button>
+              <button type="submit">Download File</button>
             </form>
           </td>
-        </tr>
+        </tr> */}
       </table>
     </div>
   );
