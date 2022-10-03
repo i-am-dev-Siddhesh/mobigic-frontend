@@ -1,6 +1,8 @@
 import CustomInput from "@/components/FormComponents/CustomInput";
 import { errorFormatter } from "@/utils/helper";
 import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiArrowUp } from "react-icons/fi";
@@ -10,6 +12,8 @@ import styles from "./upload.module.css";
 
 const UploadFileForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -21,6 +25,7 @@ const UploadFileForm = () => {
     try {
       const fd = new FormData();
       const fileFromInput = values?.file[0];
+
       fd.append("file", fileFromInput);
 
       const resp = await axios.post(
@@ -34,6 +39,7 @@ const UploadFileForm = () => {
           withCredentials: true,
         }
       );
+
       if (resp.data.status) {
         toast.success(
           `${resp?.data?.message}  having File name: ${resp?.data?.file} and Security code is: ${resp?.data?.code}`,
@@ -42,7 +48,14 @@ const UploadFileForm = () => {
             autoClose: false,
           }
         );
+      } else {
+        throw {
+          message: "Something went wrong",
+        };
       }
+
+      router.push("/");
+      reset();
     } catch (error) {
       const message = typeof error === "string" ? error : errorFormatter(error);
       toast.error(message, {
@@ -52,6 +65,7 @@ const UploadFileForm = () => {
       setIsSubmitting(false);
     }
   };
+
   return (
     <div>
       <div className={styles.parent}>
@@ -87,6 +101,13 @@ const UploadFileForm = () => {
                 iconPosition="right"
               />
             </form>
+
+            <p className={styles.signin_link} style={{ marginTop: "20px" }}>
+              Cancel upload file?{" "}
+              <Link href="/" passHref>
+                <a>Go to Home</a>
+              </Link>
+            </p>
           </div>
         </div>
       </div>

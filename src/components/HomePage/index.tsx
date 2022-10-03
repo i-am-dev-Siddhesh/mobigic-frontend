@@ -6,19 +6,13 @@ import { toast } from "react-toastify";
 import styles from "./index.module.css";
 
 const HomePage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [files, setFiles] = useState([]);
+
   useEffect(() => {
-    const resp: any = UserService.getFiles()
+    UserService.getFiles()
       .then((resp: any) => setFiles(resp?.data || []))
-      .catch((error) => {
-        console.log("errror", error);
-      });
+      .catch((error) => {});
   }, []);
 
   const onSubmit = async (values: {
@@ -55,7 +49,7 @@ const HomePage = () => {
 
   return (
     <div className={styles.root}>
-      <h1>Uploaded Files:</h1>
+      <h1 style={{ marginBottom: "10px" }}>Uploaded Files:</h1>
 
       <table className={styles.table}>
         <thead>
