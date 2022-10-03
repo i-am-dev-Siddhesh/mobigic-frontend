@@ -20,17 +20,6 @@ const LoginForm = ({ onSubmit, isSubmitting, onLoginwithGoogle }: any) => {
         <div className={styles.signin_box}>
           <div className={styles.login_container}>
             <h1 style={{ fontSize: "27px", marginBottom: "20px" }}>Log In</h1>
-            <div className={styles.google_btn} onClick={onLoginwithGoogle}>
-              <FcGoogle size={25} />
-              <div className={styles.google_btn_content}>
-                Log in with Google
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.or_section}>
-            <div className={styles.or_line}></div> or
-            <div className={styles.or_line}></div>
           </div>
 
           <div className={styles.login_container}>

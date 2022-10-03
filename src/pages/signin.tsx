@@ -2,7 +2,6 @@ import LoginForm from "@/components/Forms/LoginForm";
 import { getSession, signIn, useSession } from "next-auth/react";
 import NextRouter from "next/router";
 import { useEffect, useState } from "react";
-import NewWindow from "react-new-window";
 import { toast } from "react-toastify";
 
 export default function SignIn() {
@@ -40,22 +39,9 @@ export default function SignIn() {
     }
   };
 
-  const onLoginwithGoogle = async () => {
-    setPopUp(true);
-
-    setTimeout(() => {
-      setPopUp(false);
-    }, 30000);
-  };
-
   return (
     <>
-      <LoginForm
-        onLoginwithGoogle={onLoginwithGoogle}
-        onSubmit={onSubmit}
-        isSubmitting={isSubmitting}
-      />
-      {popup && <NewWindow url="/google-auth-handle" center="parent" />}
+      <LoginForm onSubmit={onSubmit} isSubmitting={isSubmitting} />
     </>
   );
 }
